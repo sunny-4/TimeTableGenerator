@@ -6,8 +6,7 @@ import  XLSX from 'xlsx';
 const router=express.Router();
 
 router.post('/selectedcourses',(req,res)=>{
-    generateTimetable(req.body.courses);
-    res.send("generating...")
+    res.json(generateTimetable(req.body.courses));
 })
 router.get('/courses',(req,res)=>{
     const courses=parseCourses();

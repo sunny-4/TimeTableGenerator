@@ -1,7 +1,7 @@
 import React from 'react'
 import './Stickybar.css'
 import { useState } from 'react'
-const Stickybar = ({selectedCourses}) => {
+const Stickybar = ({selectedCourses,setTimetable}) => {
   function senddata(){
     fetch('/api/selectedcourses',{
       method:'POST',
@@ -12,8 +12,8 @@ const Stickybar = ({selectedCourses}) => {
         courses:selectedCourses
       })
     })
-    .then(res =>res.text())
-    .then(data=>console.log(data))
+    .then(res =>res.json())
+    .then(data=>setTimetable(data))
   }
   return (
     <div className='stickybar'>

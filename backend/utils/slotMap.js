@@ -11,7 +11,7 @@ export function creaateSlotMap(){
             if(slotsjson[i][day]!==undefined && slotsjson[i][day]!=="Lunch Break"){
                 slotmap[slotsjson[i][day]]={
                     day,
-                    "time":slotsjson[i]["Slot"]
+                    "time":slotsjson[i]["Slot"].replace(/–/g, "-").trim()
                 }
             }
         }) 

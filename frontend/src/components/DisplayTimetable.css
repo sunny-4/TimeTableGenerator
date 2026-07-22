@@ -1,0 +1,23 @@
+.timetable{
+    margin:2rem 0;
+}
+
+.timetable table{
+    margin: 0 auto;
+    text-align:center;
+    border-collapse: collapse;
+}
+.timetable table td,.timetable table th{
+    padding: 0.5rem;
+    border: 2px solid black;
+
+}
+.timetable table th{
+    background-color: #0066cc;
+    color: white;
+}
+.beforeselect{
+    padding: 0.5rem;
+    text-align: center;
+}
+
