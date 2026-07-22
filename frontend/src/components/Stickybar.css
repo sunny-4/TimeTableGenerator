@@ -1,0 +1,26 @@
+.stickybar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem;
+    background-color: rgb(193, 189, 189);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.stickybar .btn{
+    padding: .5rem;
+    border-radius: .75rem;
+}
+.btn{
+    border: none;
+}
+.right{
+    display: flex;
+    gap: 5px;   
+}
+.right .btn:hover{
+    cursor: pointer;
+    background-color: rgb(206, 198, 244);
+}
