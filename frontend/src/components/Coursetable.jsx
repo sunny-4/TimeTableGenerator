@@ -2,7 +2,7 @@ import React from 'react'
 import './Coursetable.css'
 import { useState,useEffect } from 'react'
 
-const Coursetable = ({selectedCourses,setSelectedCourses}) => {
+const Coursetable = ({selectedCourses,setSelectedCourses,Searchtext}) => {
   const [courses, setcourses] = useState({})
   function handleselectedcourses(courseid,checked){
     if(checked){
@@ -28,7 +28,16 @@ const Coursetable = ({selectedCourses,setSelectedCourses}) => {
   useEffect(() => {
     console.log(selectedCourses)
   }, [selectedCourses])
-  
+  function filterCourses(courses, searchText){
+    const filteredCourses = Object.entries(courses).filter(([courseId, course]) => {
+      const courseName = course["Course Name"].toLowerCase();
+      const courseCode = courseId.toLowerCase();
+      const searchTextLower = searchText.toLowerCase();
+      return courseName.includes(searchTextLower) || courseCode.includes(searchTextLower);
+    })
+    return Object.fromEntries(filteredCourses);
+  }
+  const filteredCourses = filterCourses(courses, Searchtext);
 
   return (
     <div className='course-table'>
@@ -43,11 +52,12 @@ const Coursetable = ({selectedCourses,setSelectedCourses}) => {
         </thead>
         <tbody>
             {
-              Object.keys(courses).map((courseid)=>(
+              Object.keys(filteredCourses).map((courseid)=>(
+                
                 <tr key={courseid}>
                 <td>{courseid}</td>
-                <td>{courses[courseid]["Course Name"]}</td>
-                <td>{courses[courseid]["Credits"]}</td>
+                <td>{filteredCourses[courseid]["Course Name"]}</td>
+                <td>{filteredCourses[courseid]["Credits"]}</td>
                 <td><input type="checkbox" className='selectbox' onChange={(event)=>handleselectedcourses(courseid,event.target.checked)} /></td>
                 </tr>
               ))
